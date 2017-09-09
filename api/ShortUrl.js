@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const shortUrlSchema = new Schema({
   url: String,
-  key: Number,
+  key: String,
 });
 
 const ShortUrl = mongoose.model('ShortUrl', shortUrlSchema);
