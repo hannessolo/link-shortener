@@ -68,7 +68,9 @@ class Shorten extends React.Component {
     }
 
     const buttonStyle = {
-      marginTop: 20
+      marginTop: 20,
+      width: '100%',
+      
     }
 
     return (
