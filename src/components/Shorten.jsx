@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 
-class About extends React.Component {
+class Shorten extends React.Component {
   constructor(props) {
     super(props);
 
@@ -50,19 +50,42 @@ class About extends React.Component {
   }
 
   render() {
+
+    const containerStyle = {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }
+
+    const inputStyle = {
+      width: '100%',
+      padding: 5,
+      border: 'solid 1px #dcdcdc',
+      borderRadius: 0,
+      boxSizing: 'border-box',
+      boxShadow: 'none',
+      appearance: 'none'
+    }
+
+    const buttonStyle = {
+      marginTop: 20
+    }
+
     return (
-      <div>
-        <h1>About</h1>
-        <input type='text' value={this.state.value} onChange={this.handleUrlTextChange} />
-        <p>Url: {this.state.url}</p>
-        <input type='text' value={this.state.value} onChange={this.handleSurlTextChange} />
-        <p>Short Url: {this.state.surl}</p>
-        <button onClick={this.shortenUrl}>Shorten!</button>
-        {this.state.success && <p>Success!</p>}
+      <div style={containerStyle}>
+        <div>
+          <h1>Shorten a Link</h1>
+          <p>Url: {this.state.url}</p>
+          <input style={inputStyle} type='text' value={this.state.value} onChange={this.handleUrlTextChange} />
+          <p>Short Url: {this.state.surl}</p>
+          <input style={inputStyle} type='text' value={this.state.value} onChange={this.handleSurlTextChange} />
+          <button style={buttonStyle} onClick={this.shortenUrl}>Shorten!</button>
+          {this.state.success && <p>Success!</p>}
+        </div>
       </div>
     );
   }
 
 }
 
-export default About;
+export default Shorten;

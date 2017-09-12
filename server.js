@@ -31,21 +31,32 @@ app.use(function(req, res, next) {
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-app.get('/:key', (req, res) => {
-  ShortUrl.find({ key: req.params.key }, (err, sUrl) => {
-    if (err) throw err;
-
-    console.log('Woheyyy!');
-
-    res.redirect(sUrl.url);
-
-  });
-});
-
 app.use('/api', api);
 
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+});
+
+app.get('/about', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+});
+
+app.get('/:key', (req, res) => {
+  ShortUrl.find({ key: req.params.key }, (err, sUrl) => {
+
+    if(! (sUrl.length == 0)) {
+      res.redirect(sUrl[0].url);
+    } else {
+      res.redirect('/');
+    }
+
+    if (err) {
+      res.redirect('/');
+      throw err;
+    }
+
+  });
+
 });
 
 app.listen(3000, () => {
