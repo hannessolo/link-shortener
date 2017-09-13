@@ -51,7 +51,7 @@ router.post('/login', (req, res, next) => {
     } else {
       var token = jwt.sign({user}, 'secret');
       res.json({
-        sucess: true,
+        success: true,
         message: 'Authentification Sucessful',
         token: token
       })

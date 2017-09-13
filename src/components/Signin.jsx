@@ -51,7 +51,9 @@ export default class Signin extends React.Component {
         message: data.message
       });
 
-      this.props.loginHandler();
+      if(data.success == true) {
+        this.props.loginHandler();
+      }
 
     });
   }

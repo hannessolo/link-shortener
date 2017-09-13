@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Link, Route, NavLink } from 'react-router-dom';
+import { Link, Route, NavLink, Redirect } from 'react-router-dom';
 import Shorten from './Shorten.jsx';
 import Home from './Home.jsx';
 import Profile from './Profile.jsx';
 import Signin from './Signin.jsx';
+
 
 class App extends React.Component {
 
@@ -34,7 +35,8 @@ class App extends React.Component {
     });
   }
 
-  componentWillMount() {
+  checkLoginState() {
+
     fetch('http://localhost:3000/api/verify', {
       headers: {
         'Accept': 'application/json',
@@ -48,14 +50,21 @@ class App extends React.Component {
       return res.json();
     }).then((data)=>{
 
-      console.log(data);
-
       this.setState({
         loggedIn: data.loggedIn,
         user: data.user
       });
 
+      let state = data.loggedIn;
+
+      return state;
+
     });
+
+  }
+
+  componentWillMount() {
+    this.checkLoginState();
   }
 
   render(){
@@ -88,10 +97,10 @@ class App extends React.Component {
           }
         </nav>
         <div>
+          <Route path='/profile' render={()=>( this.state.loggedIn ? (< Profile logoutHandler={this.logout} user={this.state.user} />) : (< Redirect to="/signin"/>))} />
           <Route exact path='/' component={Home} />
           <Route path='/shorten' component={Shorten} />
-          <Route path='/profile' render={()=>< Profile logoutHandler={this.logout} user={this.state.user} />} />
-          <Route path='/signin'  render={()=>< Signin loginHandler={this.login} />} />
+          <Route path='/signin'  render={()=>( !this.state.loggedIn ? (< Signin loginHandler={this.login} />) : (< Redirect to="/profile"/>))} />
         </div>
       </div>
     );
