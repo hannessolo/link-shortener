@@ -28,7 +28,6 @@ router.post('/signup', (req, res, next) => {
         throw err;
       }
       console.log('User created');
-      console.log(req.body);
       res.json({
         success: true
       });
@@ -47,18 +46,38 @@ router.post('/login', (req, res, next) => {
 
     if (!user) {
       res.json({sucess: false, message: 'Authentication failed. User not found.'});
-    } else if (user && !bcrypt.compareSync(req.body.password, user.password)) {
+    } else if (user && !(bcrypt.compareSync(req.body.password, user.password))) {
       res.json({sucess: false, message: 'Authentication failed. Wrong password.'});
     } else {
-      console.log(user);
       var token = jwt.sign({user}, 'secret');
       res.json({
         sucess: true,
-        message: 'Sucessfully Authentfied? Lol im too tired to check',
+        message: 'Authentification Sucessful',
         token: token
       })
     }
 
+  });
+
+});
+
+router.post('/verify', (req, res, next) => {
+
+  res.set({
+    'Content-Type': 'application/json'
+  });
+
+  jwt.verify(req.body.token, 'secret', (err, decoded) => {
+    if (err) {
+      res.json({
+        loggedIn: false
+      });
+    } else {
+      res.json({
+        loggedIn: true,
+        user: decoded
+      });
+    }
   });
 
 });

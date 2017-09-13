@@ -2,3 +2,7 @@ body {
   margin: 0;
   font-family: 'Rubik';
 }
+
+.is-active {
+  border-bottom: 2px solid #c0392b;
+}
