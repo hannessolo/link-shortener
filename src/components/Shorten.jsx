@@ -51,38 +51,18 @@ class Shorten extends React.Component {
 
   render() {
 
-    const containerStyle = {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
-    }
-
-    const inputStyle = {
-      width: '100%',
-      padding: 5,
-      border: 'solid 1px #dcdcdc',
-      borderRadius: 0,
-      boxSizing: 'border-box',
-      boxShadow: 'none',
-      appearance: 'none'
-    }
-
-    const buttonStyle = {
-      marginTop: 20,
-      width: '100%',
-      
-    }
-
     return (
-      <div style={containerStyle}>
-        <div>
-          <h1>Shorten a Link</h1>
-          <p>Url: {this.state.url}</p>
-          <input style={inputStyle} type='text' value={this.state.value} onChange={this.handleUrlTextChange} />
-          <p>Short Url: {this.state.surl}</p>
-          <input style={inputStyle} type='text' value={this.state.value} onChange={this.handleSurlTextChange} />
-          <button style={buttonStyle} onClick={this.shortenUrl}>Shorten!</button>
-          {this.state.success && <p>Success!</p>}
+      <div className='backgroundDiv'>
+        <div className='containerStyle'>
+          <div className='content'>
+            <h1>Shorten a Link</h1>
+            <p>Url: {this.state.url}</p>
+            <input className='inputStyle' type='text' value={this.state.value} onChange={this.handleUrlTextChange} />
+            <p>Short Url: {this.state.surl}</p>
+            <input className='inputStyle' type='text' value={this.state.value} onChange={this.handleSurlTextChange} />
+            <button className='buttonStyle' onClick={this.shortenUrl}>Shorten!</button>
+            {this.state.success && <p>Success!</p>}
+          </div>
         </div>
       </div>
     );

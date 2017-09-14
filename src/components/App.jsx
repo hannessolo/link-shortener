@@ -69,31 +69,15 @@ class App extends React.Component {
 
   render(){
 
-    const navStyle = {
-      margin: 0,
-      backgroundColor: '#f39c12',
-      height: 40,
-      textDecoration: 'none',
-      display: 'flex',
-      alignItems: 'center',
-      boxShadow: '0 0 3px #000000',
-      borderTop: '1px solid #c0392b'
-    }
-
-    const linkStyle = {
-      textDecoration: 'none',
-      padding: 10,
-      color: '#2c3e50'
-    }
 
     return (
       <div>
-        <nav style={navStyle}>
-          <NavLink exact={true} activeClassName='is-active' style={linkStyle} to='/'>Home</NavLink>
-          <NavLink activeClassName='is-active' style={linkStyle} to='/shorten'>Shorten</NavLink>
+        <nav className='navStyle'>
+          <NavLink exact={true} activeClassName='is-active' className='linkStyle' to='/'>Home</NavLink>
+          <NavLink activeClassName='is-active' className='linkStyle' to='/shorten'>Shorten</NavLink>
           { this.state.loggedIn ?
-            <NavLink activeClassName='is-active' style={linkStyle} to='/profile'>Profile</NavLink>
-            : <NavLink activeClassName='is-active' style={linkStyle} to='/signin'>Sign In</NavLink>
+            <NavLink activeClassName='is-active' className='linkStyle' to='/profile'>Profile</NavLink>
+            : <NavLink activeClassName='is-active' className='linkStyle' to='/signin'>Sign In</NavLink>
           }
         </nav>
         <div>

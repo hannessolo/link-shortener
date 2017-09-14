@@ -1,8 +1,103 @@
 body {
   margin: 0;
   font-family: 'Rubik';
+  overflow: hidden;
+}
+
+tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.navStyle {
+  margin: 0;
+  background-color: #f39c12;
+  height: 40px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 3px #000000;
+  border-top: 1px solid #c0392b;
+}
+
+.linkStyle {
+  text-decoration: none;
+  padding: 10px;
+  color: #2c3e50;
+}
+
+.linkStyle:hover {
+  border-top: 2px solid #c0392b;
+  padding-top:9px;
 }
 
 .is-active {
   border-bottom: 2px solid #c0392b;
+  padding-bottom: 8px;
+}
+
+.containerStyle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  border: 1px solid #bdc3c7;
+  background-color: #ecf0f1;
+  border-radius: 3px;
+  margin-top: 40px;
+  padding: 30px;
+  box-shadow: 0px 3px 6px 0px rgba(30,30,30,0.74);
+}
+
+.inputStyle {
+  width: 100%;
+  padding: 10px;
+  border-radius: 2px;
+  border: none;
+  border-bottom: solid 2px #dcdcdc;
+  box-sizing: border-box;
+  box-shadow: none;
+  appearance: none;
+  font-size: 14pt;
+  transition: 0.5s;
+}
+
+.inputStyle:focus {
+  outline: none;
+  border-bottom: solid 2px #3498db;
+}
+
+.buttonStyle {
+  color: #2c3e50;
+  font-size: 14pt;
+  padding: 5px;
+  margin-top: 20px;
+  width: 100%;
+  border-radius: 4px;
+  background-color: #f39c12;
+  border: solid 1px #dcdcdc;
+  border-radius: 4px;
+  box-shadow: none;
+  appearance: none;
+}
+
+.backgroundDiv {
+  height: 100vh;
+  overflow: hidden;
+  background:
+  linear-gradient(
+    rgba(241, 196, 15,0.3),
+    rgba(241, 196, 15,0.3)),
+    url(./assets/img1.jpeg);
+  background-size: cover;
+}
+
+.welcomeText {
+  background-color: black;
+  color: #f1c40f;
+  font-size: 40pt;
+  padding: 10px;
+  position: relative;
+  left: 30%;
 }

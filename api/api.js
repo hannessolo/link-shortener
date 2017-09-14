@@ -5,6 +5,20 @@ const User = require('./User');
 const bcrypt = require('bcrypt-nodejs');
 const jwt = require('jsonwebtoken');
 
+router.get('/alllinks', (req, res, next) => {
+  res.set({
+    'Content-Type': 'application/json'
+  });
+
+  ShortUrl.find({}, (err, urls) => {
+
+    res.json({
+      urls: urls
+    });
+
+  });
+});
+
 router.post('/signup', (req, res, next) => {
   res.set({
     'Content-Type': 'application/json'
