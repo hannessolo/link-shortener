@@ -76,10 +76,15 @@ tr {
   width: 100%;
   border-radius: 4px;
   background-color: #f39c12;
-  border: solid 1px #dcdcdc;
+  border: none;
   border-radius: 4px;
-  box-shadow: none;
+  box-shadow: 0px 2px 2px 0px rgba(30,30,30,0.5);
   appearance: none;
+  transition: 0.5s;
+}
+
+.buttonStyle:hover {
+  background-color: #ffb935;
 }
 
 .backgroundDiv {

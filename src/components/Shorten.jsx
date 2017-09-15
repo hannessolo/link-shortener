@@ -71,4 +71,12 @@ class Shorten extends React.Component {
 
 }
 
+Shorten.defaultProps = {
+  user: {
+    user: {
+      username: 'guest'
+    }
+  }
+}
+
 export default Shorten;
