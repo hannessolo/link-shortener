@@ -12,8 +12,11 @@ export default class Profile extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/api/alllinks', ({
-      method: 'get'
+    fetch('http://localhost:3000/api/userlinks', ({
+      method: 'get',
+      headers: {
+        'Authorization': sessionStorage.token
+      }
     })).then((res) => {
       return res.json();
     }).then((data) => {

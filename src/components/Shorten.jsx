@@ -26,7 +26,8 @@ class Shorten extends React.Component {
       method: "post",
       body: JSON.stringify({
         url: this.state.url,
-        key: this.state.surl
+        key: this.state.surl,
+        createdBy: this.props.user.user.username
       })
     }).then((res) => {
       return res.json();

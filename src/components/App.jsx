@@ -83,7 +83,7 @@ class App extends React.Component {
         <div>
           <Route path='/profile' render={()=>( this.state.loggedIn ? (< Profile logoutHandler={this.logout} user={this.state.user} />) : (< Redirect to="/signin"/>))} />
           <Route exact path='/' component={Home} />
-          <Route path='/shorten' component={Shorten} />
+          <Route path='/shorten' render={()=>( <Shorten user={this.state.user}/>)} />
           <Route path='/signin'  render={()=>( !this.state.loggedIn ? (< Signin loginHandler={this.login} />) : (< Redirect to="/profile"/>))} />
         </div>
       </div>

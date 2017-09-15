@@ -5,18 +5,26 @@ const User = require('./User');
 const bcrypt = require('bcrypt-nodejs');
 const jwt = require('jsonwebtoken');
 
-router.get('/alllinks', (req, res, next) => {
+router.get('/userlinks', (req, res, next) => {
   res.set({
     'Content-Type': 'application/json'
   });
 
-  ShortUrl.find({}, (err, urls) => {
+  jwt.verify(req.get('Authorization'), 'secret', (err, decoded) => {
 
-    res.json({
-      urls: urls
+    if (err) {
+      res.json({success: false});
+      throw err;
+    }
+
+    ShortUrl.find({ createdBy: decoded.user.username }, (err, urls)=>{
+
+      res.json({urls: urls});
+
     });
 
   });
+
 });
 
 router.post('/signup', (req, res, next) => {
@@ -104,7 +112,8 @@ router.post('/create', (req, res, next) => {
 
   let newShortUrl = ShortUrl({
     url: req.body.url,
-    key: req.body.key
+    key: req.body.key,
+    createdBy: req.body.createdBy
   });
 
   newShortUrl.save((err) => {
@@ -116,6 +125,12 @@ router.post('/create', (req, res, next) => {
     }
     console.log('url created');
     console.log(req.body);
+    ShortUrl.findOne({ url: req.body.url }, (err, surl) => {
+      if (err) throw err;
+
+      console.log('Database record: ' + surl);
+
+    });
     res.json({
       success: true
     });
