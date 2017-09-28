@@ -6,7 +6,7 @@ const ShortUrl = require('./api/ShortUrl');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-mongoose.connect('mongodb://localhost/shortUrls');
+mongoose.connect('mongodb://hanneshertach.me/shortUrls');
 let db = mongoose.connection;
 db.once('open', function() {
   console.log('Connected to db');

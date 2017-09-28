@@ -37,7 +37,7 @@ class App extends React.Component {
 
   checkLoginState() {
 
-    fetch('http://localhost:3000/api/verify', {
+    fetch('http://hanneshertach.me/shortlink/api/verify', {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -73,18 +73,18 @@ class App extends React.Component {
     return (
       <div>
         <nav className='navStyle'>
-          <NavLink exact={true} activeClassName='is-active' className='linkStyle' to='/'>Home</NavLink>
-          <NavLink activeClassName='is-active' className='linkStyle' to='/shorten'>Shorten</NavLink>
+          <NavLink exact={true} activeClassName='is-active' className='linkStyle' to='/shortlink'>Home</NavLink>
+          <NavLink activeClassName='is-active' className='linkStyle' to='/shortlink/shorten'>Shorten</NavLink>
           { this.state.loggedIn ?
-            <NavLink activeClassName='is-active' className='linkStyle' to='/profile'>Profile</NavLink>
-            : <NavLink activeClassName='is-active' className='linkStyle' to='/signin'>Sign In</NavLink>
+            <NavLink activeClassName='is-active' className='linkStyle' to='/shortlink/profile'>Profile</NavLink>
+            : <NavLink activeClassName='is-active' className='linkStyle' to='/shortlink/signin'>Sign In</NavLink>
           }
         </nav>
         <div>
-          <Route path='/profile' render={()=>( this.state.loggedIn ? (< Profile logoutHandler={this.logout} user={this.state.user} />) : (< Redirect to="/signin"/>))} />
-          <Route exact path='/' component={Home} />
-          <Route path='/shorten' render={()=>( <Shorten user={this.state.user}/>)} />
-          <Route path='/signin'  render={()=>( !this.state.loggedIn ? (< Signin loginHandler={this.login} />) : (< Redirect to="/profile"/>))} />
+          <Route path='/shortlink/profile' render={()=>( this.state.loggedIn ? (< Profile logoutHandler={this.logout} user={this.state.user} />) : (< Redirect to="/signin"/>))} />
+          <Route exact path='/shortlink' component={Home} />
+          <Route path='/shortlink/shorten' render={()=>( <Shorten user={this.state.user}/>)} />
+          <Route path='/shortlink/signin'  render={()=>( !this.state.loggedIn ? (< Signin loginHandler={this.login} />) : (< Redirect to="/profile"/>))} />
         </div>
       </div>
     );

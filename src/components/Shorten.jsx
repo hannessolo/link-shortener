@@ -18,7 +18,7 @@ class Shorten extends React.Component {
 
   shortenUrl() {
 
-    fetch('http://localhost:3000/api/create', {
+    fetch('http://hanneshertach.me/shortlink/api/create', {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
