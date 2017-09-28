@@ -81,10 +81,10 @@ class App extends React.Component {
           }
         </nav>
         <div>
-          <Route path='/shortlink/profile' render={()=>( this.state.loggedIn ? (< Profile logoutHandler={this.logout} user={this.state.user} />) : (< Redirect to="/signin"/>))} />
+          <Route path='/shortlink/profile' render={()=>( this.state.loggedIn ? (< Profile logoutHandler={this.logout} user={this.state.user} />) : (< Redirect to="/shortlink/signin"/>))} />
           <Route exact path='/shortlink' component={Home} />
           <Route path='/shortlink/shorten' render={()=>( <Shorten user={this.state.user}/>)} />
-          <Route path='/shortlink/signin'  render={()=>( !this.state.loggedIn ? (< Signin loginHandler={this.login} />) : (< Redirect to="/profile"/>))} />
+          <Route path='/shortlink/signin'  render={()=>( !this.state.loggedIn ? (< Signin loginHandler={this.login} />) : (< Redirect to="/shortlink/profile"/>))} />
         </div>
       </div>
     );
