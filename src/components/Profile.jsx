@@ -12,7 +12,7 @@ export default class Profile extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://hanneshertach.me/shortlink/api/userlinks', ({
+    fetch('https://hanneshertach.me/shortlink/api/userlinks', ({
       method: 'get',
       headers: {
         'Authorization': sessionStorage.token

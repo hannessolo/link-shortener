@@ -31,7 +31,7 @@ export default class Signin extends React.Component {
   }
 
   loginUser() {
-    fetch('http://hanneshertach.me/shortlink/api/login', {
+    fetch('https://hanneshertach.me/shortlink/api/login', {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
