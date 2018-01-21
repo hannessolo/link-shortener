@@ -37,7 +37,7 @@ class App extends React.Component {
 
   checkLoginState() {
 
-    fetch('http://hanneshertach.me/shortlink/api/verify', {
+    fetch('https://hanneshertach.me/shortlink/api/verify', {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
